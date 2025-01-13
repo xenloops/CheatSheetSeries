@@ -1,4 +1,4 @@
-# Logging Cheat Sheet
+# Logging Cheat Sheet 
 
 ## Introduction
 
