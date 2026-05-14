@@ -49,6 +49,8 @@ CookieHttpOnly = true,
 
 Reduce the time period a session can be stolen in by reducing session timeout and removing sliding expiration:
 
+The decision to use sliding expiration depends on your application's threat model. Setting `SlidingExpiration` to `false` enforces an absolute session lifetime, which limits how long a stolen session can be reused, at the cost of reduced usability for long-lived interactive sessions. For some applications, enabling sliding expiration (`true`) may be preferred for user experience, as it keeps the session alive as long as the user is active. This convenience comes with increased risk if a session is compromised.
+
 ```csharp
 ExpireTimeSpan = TimeSpan.FromMinutes(60),
 SlidingExpiration = false
@@ -775,8 +777,9 @@ e.g
 services.ConfigureApplicationCookie(options =>
 {
  options.Cookie.HttpOnly = true;
- options.Cookie.Expiration = TimeSpan.FromHours(1)
- options.SlidingExpiration = true;
+ options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+ // See the discussion in A01 for trade-offs on using sliding expiration.
+ options.SlidingExpiration = false;
 });
 ```
 
@@ -1021,7 +1024,10 @@ This section contains guidance for specific topics in .NET.
 
 - Lock down config files.
     - Remove all aspects of configuration that are not in use.
-    - Encrypt sensitive parts of the `web.config` using `aspnet_regiis -pe` ([command line help](https://docs.microsoft.com/en-us/previous-versions/dotnet/netframework-2.0/k6h9cz8h(v=vs.80))).
+    - **Do not store secrets in source-controlled config files (`web.config`, `appsettings.json`).** Keep secrets out of the configuration file entirely.
+        - Modern .NET (Core / 6+ / 8+): use [User Secrets](https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets) for development and a managed secret store (Azure Key Vault, AWS Secrets Manager, HashiCorp Vault) accessed via Managed Identity / Workload Identity for production.
+        - Legacy .NET Framework (4.7.1+): use [Configuration Builders](https://learn.microsoft.com/en-us/aspnet/config-builder) (e.g. `Microsoft.Configuration.ConfigurationBuilders.Azure`, `...Environment`) to inject secrets at runtime from a secret store or environment variables, so they never appear in `web.config`.
+        - Only as a last resort — for legacy applications that cannot be modified — encrypt sensitive `web.config` sections using `aspnet_regiis -pe` ([command line help](https://docs.microsoft.com/en-us/previous-versions/dotnet/netframework-2.0/k6h9cz8h(v=vs.80))). Note that this only protects the file at rest on the server; the application still loads the plaintext into memory.
 - For ClickOnce applications, the .NET Framework should be upgraded to use the latest version to ensure support of TLS 1.2 or later.
 
 ### Data Access

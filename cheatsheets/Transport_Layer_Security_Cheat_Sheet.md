@@ -12,7 +12,7 @@ This cheat sheet provides guidance on implementing transport layer protection fo
 
 Secure Socket Layer (SSL) was the original protocol that was used to provide encryption for HTTP traffic, in the form of HTTPS. There were two publicly released versions of SSL - versions 2 and 3. Both of these have serious cryptographic weaknesses and should no longer be used.
 
-For [various reasons](http://tim.dierks.org/2014/05/security-standards-and-name-changes-in.html) the next version of the protocol (effectively SSL 3.1) was named Transport Layer Security (TLS) version 1.0. Subsequently TLS versions 1.1, 1.2 and 1.3 have been released.
+For [various reasons](https://tim.dierks.org/2014/05/security-standards-and-name-changes-in.html) the next version of the protocol (effectively SSL 3.1) was named Transport Layer Security (TLS) version 1.0. Subsequently TLS versions 1.1, 1.2 and 1.3 have been released.
 
 The terms "SSL", "SSL/TLS" and "TLS" are frequently used interchangeably, and in many cases "SSL" is used when referring to the more modern TLS protocol. This cheat sheet will use the term "TLS" except where referring to the legacy protocols.
 
@@ -20,11 +20,9 @@ The terms "SSL", "SSL/TLS" and "TLS" are frequently used interchangeably, and in
 
 ### Only Support Strong Protocols
 
-General purpose web applications should default to **TLS 1.3** (support TLS 1.2 if necessary) with all other protocols disabled.
+Web applications must default to **TLS 1.3** and may support TLS 1.2 for compatibility. **TLS 1.0 and TLS 1.1 are formally deprecated by [RFC 8996](https://datatracker.ietf.org/doc/html/rfc8996) (March 2021) and must be disabled.** They are also forbidden by [PCI DSS](https://www.pcisecuritystandards.org/documents/Migrating-from-SSL-Early-TLS-Info-Supp-v1_1.pdf), disallowed by NIST SP 800-52 Rev. 2, and removed from all mainstream browsers. SSLv2 and SSLv3 must always be disabled.
 
- In specific and uncommon situations where a web server is required to accommodate legacy clients that depend on outdated and unsecured browsers (like Internet Explorer 10), activating TLS 1.0 may be the only option. However, this approach should be exercised with caution and is generally not advised due to the security implications. Additionally, ["TLS_FALLBACK_SCSV" extension](https://tools.ietf.org/html/rfc7507) should be enabled in order to prevent downgrade attacks against newer clients.
-
-Note that PCI DSS [forbids the use of legacy protocols such as TLS 1.0](https://www.pcisecuritystandards.org/documents/Migrating-from-SSL-Early-TLS-Info-Supp-v1_1.pdf).
+If interoperability with end-of-life clients is a hard business requirement, isolate them on a dedicated endpoint with no access to sensitive data — do not weaken the primary endpoint. The ["TLS_FALLBACK_SCSV" extension](https://tools.ietf.org/html/rfc7507) should be enabled to prevent protocol downgrade attacks.
 
 ### Only Support Strong Ciphers
 
@@ -75,7 +73,7 @@ TLS compression should be disabled in order to protect against a vulnerability (
 
 ### Patch Cryptographic Libraries
 
-As well as the vulnerabilities in the SSL and TLS protocols, there have also been a large number of historic vulnerability in SSL and TLS libraries, with [Heartbleed](http://heartbleed.com) being the most well known. As such, it is important to ensure that these libraries are kept up to date with the latest security patches.
+As well as the vulnerabilities in the SSL and TLS protocols, there have also been a large number of historic vulnerability in SSL and TLS libraries, with [Heartbleed](https://heartbleed.com) being the most well known. As such, it is important to ensure that these libraries are kept up to date with the latest security patches.
 
 ### Test the Server Configuration
 
@@ -243,4 +241,3 @@ However, public key pinning can still provide security benefits for mobile appli
 - IETF - [RFC 2246 The Transport Layer Security (TLS) Protocol Version 1.0 (JAN 1999)](https://tools.ietf.org/html/rfc2246)
 - IETF - [RFC 4346 The Transport Layer Security (TLS) Protocol Version 1.1 (APR 2006)](https://tools.ietf.org/html/rfc4346)
 - IETF - [RFC 5246 The Transport Layer Security (TLS) Protocol Version 1.2 (AUG 2008)](https://tools.ietf.org/html/rfc5246)
-- Bettercrypto - [Applied Crypto Hardening: HOW TO for secure crypto settings of the most common services)](https://bettercrypto.org)

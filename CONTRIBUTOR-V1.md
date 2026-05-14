@@ -52,9 +52,9 @@ Sorting applied on the name is an alphabetical one.
 
 ## [C-Based Toolchain Hardening Cheat Sheet](https://github.com/OWASP/CheatSheetSeries/tree/master/cheatsheets/C-Based_Toolchain_Hardening_Cheat_Sheet.md)
 
-- Jeffrey Walton - jeffrey@owasp.org
-- Jim Manico - jim@owasp.org
-- Kevin Wall - kevin@owasp.org
+- Jeffrey Walton - <jeffrey@owasp.org>
+- Jim Manico - <jim@owasp.org>
+- Kevin Wall - <kevin@owasp.org>
 
 ## [Choosing and Using Security Questions Cheat Sheet](https://github.com/OWASP/CheatSheetSeries/tree/master/cheatsheets/Choosing_and_Using_Security_Questions_Cheat_Sheet.md)
 
@@ -63,12 +63,12 @@ Sorting applied on the name is an alphabetical one.
 ## [Clickjacking Defense Cheat Sheet](https://github.com/OWASP/CheatSheetSeries/tree/master/cheatsheets/Clickjacking_Defense_Cheat_Sheet.md)
 
 - Aabashkin
-- Dave Wichers - dwichers@gmail.com
+- Dave Wichers - <dwichers@gmail.com>
 - Eelgheez
 - Jeffrey Walton
-- Jim Manico - jim@owasp.org
+- Jim Manico - <jim@owasp.org>
 - Michael Brook
-- Santhosh Tuppad - santhosh.tuppad@gmail.com
+- Santhosh Tuppad - <santhosh.tuppad@gmail.com>
 - Shruti kulkarni
 - Till Maas
 - Tom Parker
@@ -88,7 +88,7 @@ Sorting applied on the name is an alphabetical one.
 - Dominique Righetto - [dominique.righetto@owasp.org](mailto:dominique.righetto@owasp.org)
 - Eric Sheridan - [eric.sheridan@owasp.org](mailto:eric.sheridan@owasp.org)
 - Paul Petefish
-- [Manideep Konakandla (Amazon Application Security Team)](http://www.manideepk.com)
+- [Manideep Konakandla (Amazon Application Security Team)](https://www.manideepk.com)
 
 ## [Cross Site Scripting Prevention Cheat Sheet](https://github.com/OWASP/CheatSheetSeries/tree/master/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.md)
 
@@ -236,6 +236,10 @@ Sorting applied on the name is an alphabetical one.
 - Jim Manico - [jim.manico@owasp.org](mailto:jim.manico@owasp.org)
 - Katy Anton - [katy.anton@owasp.org](mailto:katy.anton@owasp.org)
 
+## [OAuth2 Cheat Sheet](https://github.com/OWASP/CheatSheetSeries/tree/master/cheatsheets/OAuth2_Cheat_Sheet.md)
+
+- [Gabriel Corona](https://github.com/randomstuff)
+
 ## [PHP Configuration Cheat Sheet](https://github.com/OWASP/CheatSheetSeries/tree/master/cheatsheets/PHP_Configuration_Cheat_Sheet.md)
 
 - Abbas Naderi - [abbas.naderi@owasp.org](mailto:abbas.naderi@owasp.org)
@@ -259,7 +263,7 @@ Sorting applied on the name is an alphabetical one.
 
 ## Protect FileUpload Against Malicious File
 
-- Dominique Righetto - dominique.righetto@owasp.org
+- Dominique Righetto - <dominique.righetto@owasp.org>
 
 ## [Query Parameterization Cheat Sheet](https://github.com/OWASP/CheatSheetSeries/tree/master/cheatsheets/Query_Parameterization_Cheat_Sheet.md)
 
@@ -299,7 +303,7 @@ Sorting applied on the name is an alphabetical one.
 
 - Gunnar Peterson
 - James McGovern
-- [Brad Broulik](http://bradbroulik.blogspot.dk/2010/01/bulletproof-sso-with-saml-20.html)
+- [Brad Broulik](https://bradbroulik.blogspot.com/2010/01/bulletproof-sso-with-saml-20.html)
 - [Paweł Krawczyk](https://ipsec.pl/)
 
 ## [SQL Injection Prevention Cheat Sheet](https://github.com/OWASP/CheatSheetSeries/tree/master/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.md)
@@ -321,6 +325,7 @@ Sorting applied on the name is an alphabetical one.
 ## [Session Management Cheat Sheet](https://github.com/OWASP/CheatSheetSeries/tree/master/cheatsheets/Session_Management_Cheat_Sheet.md)
 
 - Raul Siles (DinoSec) - [raul@dinosec.com](mailto:raul@dinosec.com)
+- [Gabriel Corona](https://github.com/randomstuff)
 
 ## [Third Party Javascript Management Cheat Sheet](https://github.com/OWASP/CheatSheetSeries/tree/master/cheatsheets/Third_Party_Javascript_Management_Cheat_Sheet.md)
 
